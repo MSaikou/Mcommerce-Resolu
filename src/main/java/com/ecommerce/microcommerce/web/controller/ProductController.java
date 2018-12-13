@@ -88,7 +88,8 @@ public class ProductController {
 
 		productDao.delete(id);
 	}
-
+	
+	
 	@PutMapping(value = "/Produits")
 	public void updateProduit(@RequestBody Product product) {
 
@@ -103,7 +104,7 @@ public class ProductController {
 	}
 
 	@ApiOperation(value = "Affichage des marges des produits")
-	@GetMapping(value = "Produits/Marge")
+	@GetMapping(value = "/AdminProduits")
 	public List<String> testList() {
 		List<String> liste = new ArrayList<>();
 		List<Product> listes = new ArrayList<>();
