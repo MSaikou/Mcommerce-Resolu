@@ -95,18 +95,16 @@ public class ProductController {
 
 		return productDao.chercherUnProduitCher(400);
 	}
-	
-	@ApiOperation(value="Affichage des marges des produits")
+
+	@ApiOperation(value = "Affichage des marges des produits")
 	@GetMapping(value = "Produits/marge")
 	public List<String> testList() {
 		List<String> liste = new ArrayList<>();
 		List<Product> listes = new ArrayList<>();
 		listes = productDao.findAll();
-		String debut = "\"";
-		String fin = "\":";
+
 		for (int i = 0; i < listes.size(); i++) {
-			liste.add(
-					fin + listes.get(i).toString() + debut + (listes.get(i).getPrix() - listes.get(i).getPrixAchat()));
+			liste.add(listes.get(i).toString() + ":" + (listes.get(i).getPrix() - listes.get(i).getPrixAchat()));
 		}
 		return liste;
 	}
