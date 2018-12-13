@@ -2,7 +2,6 @@ package com.ecommerce.microcommerce.web.controller;
 
 import com.ecommerce.microcommerce.dao.ProductDao;
 import com.ecommerce.microcommerce.model.Product;
-import com.ecommerce.microcommerce.web.exceptions.ProduitGratuitException;
 import com.ecommerce.microcommerce.web.exceptions.ProduitIntrouvableException;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
@@ -63,13 +62,9 @@ public class ProductController {
 	}
 
 	// ajouter un produit
-	@ApiOperation(value = "Methode d'ajout de produit")
 	@PostMapping(value = "/Produits")
 
 	public ResponseEntity<Void> ajouterProduit(@Valid @RequestBody Product product) {
-
-		if ((product.getPrix() == 0) || (product.getPrix() > 0))
-			throw new ProduitGratuitException("Il n'y pas de produit gratuit, merci de fournir un prix valable");
 
 		Product productAdded = productDao.save(product);
 
@@ -113,11 +108,11 @@ public class ProductController {
 		}
 		return liste;
 	}
-
-	@ApiOperation(value = "Methode qui retourne les produits par ordre alphabetique")
-	@GetMapping(value = "Produits/Tri")
-	public List<Product> trierProduitsParOrdreAlphabetique() {
-		return productDao.listeProduitTrierParOrdreAlbhabetique();
-	}
+	
+	@ApiOperation(value="Methode qui retourne les produits par ordre alphabetique")
+	@GetMapping(value="Produits/Tri")
+    public List<Product> trierProduitsParOrdreAlphabetique(){
+    	return productDao.listeProduitTrierParOrdreAlbhabetique();
+    }
 
 }
