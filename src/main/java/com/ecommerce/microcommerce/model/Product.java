@@ -18,7 +18,7 @@ public class Product {
 	@Length(min = 3, max = 20, message = "Nom trop long ou trop court. Et oui messages sont plus stylés que ceux de Spring")
 	private String nom;
 
-	@Min(value = 1, message="Il ne doit y avoir aucun produit grauit")
+	@Min(value = 1, message="Il ne doit y avoir aucun produit gratuit")
 	private int prix;
 
 	// information que nous ne souhaitons pas exposer

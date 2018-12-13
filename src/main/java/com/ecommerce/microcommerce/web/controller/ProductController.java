@@ -67,8 +67,9 @@ public class ProductController {
 	@PostMapping(value = "/Produits")
 
 	public ResponseEntity<Void> ajouterProduit(@Valid @RequestBody Product product) {
-
-		if ((product.getPrix() == 0) || (product.getPrix() < 0))
+		System.out.println("Le prix est : "+product.getPrix());
+		if ((product.getPrix() == 0))
+			
 			throw new ProduitGratuitException("Prix invalide, merci de fournir un prix valide");
 		
 		Product productAdded = productDao.save(product);
