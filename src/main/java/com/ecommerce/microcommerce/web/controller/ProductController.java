@@ -97,7 +97,7 @@ public class ProductController {
 	}
 
 	@ApiOperation(value = "Affichage des marges des produits")
-	@GetMapping(value = "Produits/marge")
+	@GetMapping(value = "Produits/Marge")
 	public List<String> testList() {
 		List<String> liste = new ArrayList<>();
 		List<Product> listes = new ArrayList<>();
@@ -108,5 +108,11 @@ public class ProductController {
 		}
 		return liste;
 	}
+	
+	@ApiOperation(value="Methode qui retourne les produits par ordre alphabetique")
+	@GetMapping(value="Produits/Tri")
+    public List<Product> trierProduitsParOrdreAlphabetique(){
+    	return productDao.listeProduitTrierParOrdreAlbhabetique();
+    }
 
 }
